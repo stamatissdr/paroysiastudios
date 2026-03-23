@@ -1,18 +1,19 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 ---
 <header class="bg-charcoal border-b border-slate/20 sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a class="flex items-center gap-2" href="/">
+    <a class="flex items-center gap-2" href={`${base}/`}>
       <span class="text-cloud font-bold text-xl" style="font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase\">PAROYSIA</span>
       <span class="w-2 h-2 rounded-full" style="background-color: #388E4F"></span>
     </a>
 
     <nav class="hidden md:flex items-center gap-8 text-sm">
-      <a href="/services" class="text-cloud hover:text-primary transition-colors">Services</a>
-      <a href="/portfolio" class="text-cloud hover:text-primary transition-colors">Portfolio</a>
-      <a href="/about" class="text-cloud hover:text-primary transition-colors">About</a>
-      <a href="/contact" class="text-cloud hover:text-primary transition-colors">Contact</a>
-      <a href="/free-audit" class="ml-4 inline-block bg-primary text-white px-5 py-2 rounded font-semibold hover:bg-deepgreen transition-colors">Free Audit</a>
+      <a href={`${base}/services`} class="text-cloud hover:text-primary transition-colors">Services</a>
+      <a href={`${base}/portfolio`} class="text-cloud hover:text-primary transition-colors">Portfolio</a>
+      <a href={`${base}/about`} class="text-cloud hover:text-primary transition-colors">About</a>
+      <a href={`${base}/contact`} class="text-cloud hover:text-primary transition-colors">Contact</a>
+      <a href={`${base}/free-audit`} class="ml-4 inline-block bg-primary text-white px-5 py-2 rounded font-semibold hover:bg-deepgreen transition-colors">Free Audit</a>
     </nav>
 
     <button class="md:hidden p-2 hover:bg-slate/20 rounded text-cloud" aria-label="Open menu">

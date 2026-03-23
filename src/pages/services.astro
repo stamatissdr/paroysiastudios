@@ -1,6 +1,7 @@
 ---
 import Layout from '../components/Layout.astro'
 import ServiceCard from '../components/ServiceCard.astro'
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 ---
 <Layout seo={{ title: 'Services', description: 'Service tiers and pricing. Foundation, Growth, and Authority plans.' }}>
   <div class="max-w-6xl mx-auto px-6 py-16">
@@ -105,7 +106,7 @@ import ServiceCard from '../components/ServiceCard.astro'
       <h2 class="text-3xl font-bold text-cloud">Ready to get started?</h2>
       <p class="text-slate mt-4">Each plan is customized to your business needs. Let's find the right fit.</p>
       <div class="mt-8">
-        <a href="/free-audit" class="inline-block bg-primary text-white px-8 py-4 rounded font-semibold hover:bg-deepgreen transition-colors">
+        <a href={`${base}/free-audit`} class="inline-block bg-primary text-white px-8 py-4 rounded font-semibold hover:bg-deepgreen transition-colors">
           Request Free Audit
         </a>
       </div>
