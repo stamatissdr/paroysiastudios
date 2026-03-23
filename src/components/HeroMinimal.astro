@@ -4,7 +4,7 @@
   <!-- Sticky Logo Section -->
   <div class="sticky top-0 h-screen flex items-center justify-center z-10 bg-charcoal">
     <div class="text-center">
-      <h1 class="text-7xl md:text-8xl text-cloud" style="font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase;">
+      <h1 class="text-5xl md:text-8xl text-cloud" style="font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase;">
         PAROYSIA
       </h1>
       <div class="mt-6 flex justify-center gap-2">
@@ -16,7 +16,7 @@
   <!-- Welcome Section (scrolls through PAROYSIA) -->
   <div class="relative bg-charcoal text-cloud py-12 px-6 fade-in-on-scroll" style="opacity: 0; margin-top: -60vh; position: relative; z-20;">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-5xl md:text-6xl font-black text-cloud mb-12" style="font-weight: 900; line-height: 1.1;">
+      <h2 class="text-3xl md:text-6xl font-black text-cloud mb-8 md:mb-12" style="font-weight: 900; line-height: 1.1;">
         Your business, finally visible.
       </h2>
 
@@ -45,7 +45,7 @@
           <p class="text-sm text-slate italic mb-6">
             Start with a free audit. In 30 minutes, you'll see exactly where you stand — and what it takes to be found.
           </p>
-          <a href="/free-audit" class="inline-block bg-primary text-white px-8 py-4 rounded font-semibold hover:bg-deepgreen transition-colors text-lg">
+          <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/free-audit`} class="inline-block bg-primary text-white px-8 py-4 rounded font-semibold hover:bg-deepgreen transition-colors text-lg">
             Get Your Free Audit →
           </a>
         </div>
