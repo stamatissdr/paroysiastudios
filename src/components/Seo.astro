@@ -1,0 +1,45 @@
+---
+const { title, description, url, image, canonical } = Astro.props
+const site = 'Paroysia Studios'
+const siteUrl = 'https://paroysiastudios.com'
+const metaTitle = title ? `${title} — ${site}` : site
+const metaDesc = description || 'Your business, finally visible.'
+const metaUrl = url || siteUrl
+const metaImage = image || `${siteUrl}/og-image.png`
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  'name': 'Paroysia Studios',
+  'description': 'Digital presence agency for small businesses',
+  'url': 'https://paroysiastudios.com',
+  'address': {
+    '@type': 'PostalAddress',
+    'addressLocality': 'Thessaloniki',
+    'addressCountry': 'GR'
+  },
+  'email': 'hello@paroysiastudios.com'
+}
+---
+<head>
+  <title>{metaTitle}</title>
+  <meta name="description" content={metaDesc} />
+  <link rel="canonical" href={canonical || metaUrl} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={site} />
+  <meta property="og:title" content={metaTitle} />
+  <meta property="og:description" content={metaDesc} />
+  <meta property="og:url" content={metaUrl} />
+  <meta property="og:image" content={metaImage} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={metaTitle} />
+  <meta name="twitter:description" content={metaDesc} />
+  <meta name="twitter:image" content={metaImage} />
+
+  <link rel="icon" href="/favicon.svg" />
+  <meta name="theme-color" content="#388E4F" />
+  
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</head>

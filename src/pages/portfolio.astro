@@ -1,0 +1,39 @@
+---
+import Layout from '../components/Layout.astro'
+---
+<Layout seo={{ title: 'Portfolio', description: 'Portfolio and case studies.' }}>
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <h1 class="text-3xl font-bold text-cloud">Work</h1>
+    <p class="text-slate mt-3">Selected case studies.</p>
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+
+      <div class="bg-white/10 border border-slate/20 p-6 rounded-lg flex flex-col justify-between">
+        <div>
+          <p class="text-primary text-xs uppercase tracking-widest mb-2">Case Study</p>
+          <h2 class="text-cloud text-xl font-semibold">We Work</h2>
+          <p class="text-slate text-sm mt-2">Digital marketing company, Kalamaria.</p>
+        </div>
+        <a href="/work/case-a" class="mt-6 text-sm text-cloud hover:text-primary transition-colors">View Case Study →</a>
+      </div>
+
+      <div class="bg-white/10 border border-slate/20 p-6 rounded-lg flex flex-col justify-between">
+        <div>
+          <p class="text-primary text-xs uppercase tracking-widest mb-2">Case Study</p>
+          <h2 class="text-cloud text-xl font-semibold">Greco Blend</h2>
+          <p class="text-slate text-sm mt-2">Coffee brand, Thessaloniki.</p>
+        </div>
+        <a href="/work/case-b" class="mt-6 text-sm text-cloud hover:text-primary transition-colors">View Case Study →</a>
+      </div>
+
+      <div class="bg-primary/10 border border-primary/30 p-6 rounded-lg flex flex-col justify-between">
+        <div>
+          <p class="text-primary text-xs uppercase tracking-widest mb-2">Your business?</p>
+          <h2 class="text-cloud text-xl font-semibold">Want to be here?</h2>
+          <p class="text-slate text-sm mt-2">Get your free website and start showing up where it matters.</p>
+        </div>
+        <a href="/want-to-be-here" class="mt-6 inline-block bg-primary text-white text-sm px-5 py-2 rounded font-semibold hover:bg-deepgreen transition-colors">Get Your Free Audit →</a>
+      </div>
+
+    </div>
+  </section>
+</Layout>

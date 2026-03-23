@@ -1,0 +1,73 @@
+---
+---
+<section class="relative bg-charcoal text-cloud overflow-hidden">
+  <!-- Sticky Logo Section -->
+  <div class="sticky top-0 h-screen flex items-center justify-center z-10 bg-charcoal">
+    <div class="text-center">
+      <h1 class="text-7xl md:text-8xl text-cloud" style="font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase;">
+        PAROYSIA
+      </h1>
+      <div class="mt-6 flex justify-center gap-2">
+        <span class="w-3 h-3 rounded-full" style="background-color: #388E4F"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome Section (scrolls through PAROYSIA) -->
+  <div class="relative bg-charcoal text-cloud py-12 px-6 fade-in-on-scroll" style="opacity: 0; margin-top: -60vh; position: relative; z-20;">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-5xl md:text-6xl font-black text-cloud mb-12" style="font-weight: 900; line-height: 1.1;">
+        Your business, finally visible.
+      </h2>
+
+      <div class="space-y-6 text-lg leading-relaxed text-slate mx-auto">
+        <p>
+          You built your business with hard work, long hours, and real relationships. But when someone searches for what you offer, they find your competitor instead of you.
+        </p>
+
+        <p>
+          Maybe you've been told you need a €3,000 website. Maybe an agency promised you results and delivered a report full of numbers that meant nothing. Maybe you set up a Facebook page two years ago, posted for a week, and never touched it again.
+        </p>
+
+        <p>
+          <strong class="text-cloud">You're not behind. You just haven't had the right partner.</strong>
+        </p>
+
+        <p>
+          Paroysia exists for one reason: to give your business the online presence it deserves — without the jargon, without the overpriced packages, and without making you feel like you need a degree in marketing just to get started.
+        </p>
+
+        <p>
+          We don't sell dreams. We look at where you are right now, show you exactly what's missing, and build only what you actually need. A Google profile that works. A website that loads fast and looks right on every phone. A presence that makes people trust you before they've even walked through your door.
+        </p>
+
+        <div class="pt-6 flex flex-col items-center">
+          <p class="text-sm text-slate italic mb-6">
+            Start with a free audit. In 30 minutes, you'll see exactly where you stand — and what it takes to be found.
+          </p>
+          <a href="/free-audit" class="inline-block bg-primary text-white px-8 py-4 rounded font-semibold hover:bg-deepgreen transition-colors text-lg">
+            Get Your Free Audit →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const welcomeSection = document.querySelector('.fade-in-on-scroll') as HTMLElement;
+
+  function updateOpacity() {
+    if (!welcomeSection) return;
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    // Fade in between 30% and 90% of one screen height scrolled
+    const fadeStart = windowHeight * 0.3;
+    const fadeEnd = windowHeight * 0.9;
+    const opacity = Math.max(0, Math.min(1, (scrollY - fadeStart) / (fadeEnd - fadeStart)));
+    welcomeSection.style.opacity = opacity.toString();
+  }
+
+  window.addEventListener('scroll', updateOpacity, { passive: true });
+  updateOpacity();
+</script>

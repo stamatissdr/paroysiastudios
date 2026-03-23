@@ -1,0 +1,16 @@
+---
+const { title, features } = Astro.props
+---
+<article class="bg-white/10 backdrop-blur rounded-lg shadow-sm p-8 border border-slate/30 hover:border-primary/50 hover:shadow-md transition-all group h-[420px] flex flex-col items-center justify-center">
+  <h3 class="text-cloud text-center text-5xl md:text-6xl" style="font-weight: 200; letter-spacing: 0.2em; text-transform: uppercase;">{title}</h3>
+
+  <!-- Features hidden by default, fade in on hover -->
+  <ul class="mt-8 space-y-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-center">
+    {features.map(f => (
+      <li class="flex items-center justify-center gap-2 text-slate text-sm">
+        <span class="text-primary">✓</span>
+        <span>{f}</span>
+      </li>
+    ))}
+  </ul>
+</article>

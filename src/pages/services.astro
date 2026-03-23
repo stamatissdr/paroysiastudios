@@ -1,0 +1,114 @@
+---
+import Layout from '../components/Layout.astro'
+import ServiceCard from '../components/ServiceCard.astro'
+---
+<Layout seo={{ title: 'Services', description: 'Service tiers and pricing. Foundation, Growth, and Authority plans.' }}>
+  <div class="max-w-6xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold text-cloud text-center">Services</h1>
+    <p class="text-slate mt-4 text-lg text-center">Hover over each plan to see what's included.</p>
+
+    <!-- Carousel wrapper -->
+    <div class="carousel-wrapper mt-12 relative group/carousel">
+      <!-- Arrows -->
+      <button class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 text-cloud/50 hover:text-cloud text-3xl px-2 py-4 select-none">‹</button>
+      <button class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 text-cloud/50 hover:text-cloud text-3xl px-2 py-4 select-none">›</button>
+
+      <!-- Viewport -->
+      <div class="carousel-viewport overflow-hidden">
+        <div class="carousel-track flex transition-transform duration-700 ease-in-out will-change-transform">
+          <div class="carousel-item flex-shrink-0 w-full">
+            <ServiceCard
+              title="Foundation"
+              features={[
+                "Google Business setup",
+                "One-page website",
+                "Basic local SEO",
+                "Social media cleanup",
+                "Email setup"
+              ]}
+            />
+          </div>
+          <div class="carousel-item flex-shrink-0 w-full">
+            <ServiceCard
+              title="Growth"
+              features={[
+                "Full business website (5-10 pages)",
+                "Google Ads setup",
+                "Advanced local SEO",
+                "Review management system",
+                "Content templates",
+                "Monthly optimization"
+              ]}
+            />
+          </div>
+          <div class="carousel-item flex-shrink-0 w-full">
+            <ServiceCard
+              title="Authority"
+              features={[
+                "Complete digital ecosystem",
+                "Advanced SEO strategy",
+                "Email marketing automation",
+                "Professional photography",
+                "Competitor monitoring",
+                "Monthly reporting",
+                "Priority support"
+              ]}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const wrapper = document.querySelector('.carousel-wrapper') as HTMLElement;
+      const track = document.querySelector('.carousel-track') as HTMLElement;
+      const items = document.querySelectorAll('.carousel-item');
+      const prevBtn = document.querySelector('.carousel-prev') as HTMLButtonElement;
+      const nextBtn = document.querySelector('.carousel-next') as HTMLButtonElement;
+
+      let current = 0;
+      let paused = false;
+      let scrollCooldown = false;
+
+      function getOffset(index: number): number {
+        return (items[index] as HTMLElement).offsetLeft;
+      }
+
+      function goTo(index: number) {
+        current = (index + items.length) % items.length;
+        track.style.transform = `translateX(-${getOffset(current)}px)`;
+      }
+
+      setInterval(() => { if (!paused) goTo(current + 1); }, 6000);
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      wrapper.addEventListener('mouseenter', () => { paused = true; });
+      wrapper.addEventListener('mouseleave', () => { paused = false; });
+
+      // Horizontal scroll changes plan, vertical scroll passes through to page
+      wrapper.addEventListener('wheel', (e: WheelEvent) => {
+        if (!paused) return;
+        const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+        if (!isHorizontal) return; // let vertical scroll bubble up normally
+        e.preventDefault();
+        if (scrollCooldown) return;
+        scrollCooldown = true;
+        setTimeout(() => { scrollCooldown = false; }, 800);
+        if (e.deltaX > 10) goTo(current + 1);
+        else if (e.deltaX < -10) goTo(current - 1);
+      }, { passive: false });
+    </script>
+
+    <section class="mt-20 text-center">
+      <h2 class="text-3xl font-bold text-cloud">Ready to get started?</h2>
+      <p class="text-slate mt-4">Each plan is customized to your business needs. Let's find the right fit.</p>
+      <div class="mt-8">
+        <a href="/free-audit" class="inline-block bg-primary text-white px-8 py-4 rounded font-semibold hover:bg-deepgreen transition-colors">
+          Request Free Audit
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>

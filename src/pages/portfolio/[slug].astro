@@ -1,0 +1,62 @@
+---
+import Layout from '../../components/Layout.astro'
+
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'case-a' } },
+    { params: { slug: 'case-b' } },
+    { params: { slug: 'case-c' } }
+  ]
+}
+
+const { slug } = Astro.params
+const caseStudies = {
+  'case-a': { title: 'Local Bakery', business: 'Small bakery in Thessaloniki' },
+  'case-b': { title: 'Café & Bistro', business: 'Coffee shop looking to expand' },
+  'case-c': { title: 'Retail Store', business: 'Fashion boutique' }
+}
+const caseData = caseStudies[slug] || { title: 'Case Study', business: 'Business' }
+---
+<Layout seo={{ title: caseData.title, description: 'Case study: ' + caseData.business }}>
+  <article class="max-w-4xl mx-auto px-6 py-16">
+    <h1 class="text-3xl font-bold text-charcoal">{caseData.title}</h1>
+    <p class="text-slate mt-4">{caseData.business}</p>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-charcoal">The Problem</h2>
+      <p class="text-slate mt-4">Placeholder problem statement. Business was struggling with online visibility.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold text-charcoal">What We Did</h2>
+      <ul class="text-slate mt-4 space-y-2">
+        <li>• Built modern website</li>
+        <li>• Optimized for local SEO</li>
+        <li>• Set up Google Business</li>
+        <li>• Integrated booking system</li>
+      </ul>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold text-charcoal">Results</h2>
+      <div class="mt-4 grid md:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded">
+          <div class="text-3xl font-bold text-primary">+150%</div>
+          <p class="text-slate text-sm">Website traffic</p>
+        </div>
+        <div class="bg-white p-4 rounded">
+          <div class="text-3xl font-bold text-primary">45</div>
+          <p class="text-slate text-sm">Calls per month</p>
+        </div>
+        <div class="bg-white p-4 rounded">
+          <div class="text-3xl font-bold text-primary">4.9★</div>
+          <p class="text-slate text-sm">Google rating</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/work" class="text-primary">← Back to work</a>
+    </div>
+  </article>
+</Layout>

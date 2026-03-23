@@ -1,0 +1,26 @@
+---
+import Layout from '../components/Layout.astro'
+import HeroMinimal from '../components/HeroMinimal.astro'
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Paroysia Studios",
+  "description": "Digital presence agency for small businesses in Thessaloniki",
+  "url": "https://paroysiastudios.com",
+  "telephone": "+30-placeholder",
+  "email": "hello@paroysiastudios.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Thessaloniki",
+    "addressCountry": "GR"
+  },
+  "areaServed": "Thessaloniki",
+  "priceRange": "€250-€500"
+}
+---
+<Layout seo={{ title: 'Home', description: 'Your business, finally visible. Digital presence agency for small businesses in Thessaloniki.' }}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+
+  <HeroMinimal />
+</Layout>

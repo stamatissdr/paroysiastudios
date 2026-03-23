@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #388E4F;
+  --color-deep: #2F6F3E;
+  --color-charcoal: #2B2F33;
+  --color-slate: #6B7177;
+  --color-cloud: #D9DEE3;
+}
+
+html,
+body {
+  font-family: 'Roboto Serif', ui-sans-serif, system-ui;
+  background-color: #2B2F33;
+  color: #D9DEE3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Light backgrounds (cards, sections) */
+.bg-white {
+  background-color: #FFFFFF;
+  color: #2B2F33;
+}
+
+.bg-cloud {
+  background-color: #D9DEE3;
+  color: #2B2F33;
+}
+
+a {
+  color: #388E4F;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+button {
+  transition: background-color 0.2s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: inherit;
+  font-family: 'Roboto Serif', ui-sans-serif, system-ui;
+}
+
+/* Prose styling for welcome message */
+.prose {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #6B7177;
+}
+
+.prose p {
+  margin-bottom: 1.5rem;
+  color: #6B7177;
+}
+
+.prose strong {
+  color: #D9DEE3;
+  font-weight: 600;
+}
+
+.prose-lg {
+  font-size: 1.25rem;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid #388E4F;
+  outline-offset: 2px;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.text-charcoal {
+  color: var(--color-charcoal);
+}
+
+.text-slate {
+  color: var(--color-slate);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-charcoal {
+  background-color: var(--color-charcoal);
+}
+
+.bg-deepgreen {
+  background-color: var(--color-deep);
+}
+
+.border-cloud {
+  border-color: var(--color-cloud);
+}

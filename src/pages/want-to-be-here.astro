@@ -1,0 +1,32 @@
+---
+import Layout from '../components/Layout.astro'
+---
+<Layout seo={{ title: 'Want to be here?', description: 'Tell us why you want a free website.' }}>
+  <section class="max-w-2xl mx-auto px-6 py-20">
+    <p class="text-primary text-sm uppercase tracking-widest mb-4">Free Website</p>
+    <h1 class="text-5xl md:text-6xl text-cloud mb-12" style="font-weight: 200; letter-spacing: 0.1em;">Tell us why you want a free website.</h1>
+
+    <form action="https://formspree.io/f/xreynbzl" method="POST" class="flex flex-col gap-6">
+      <input type="hidden" name="_subject" value="Free Website Request" />
+
+      <div class="flex flex-col gap-1">
+        <label class="text-slate text-sm uppercase tracking-widest">Your name</label>
+        <input name="name" required class="bg-white/5 border border-slate/30 rounded-lg px-4 py-3 text-cloud placeholder:text-slate/40 focus:outline-none focus:border-primary transition-colors" placeholder="Stamatis..." />
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label class="text-slate text-sm uppercase tracking-widest">Email</label>
+        <input name="email" type="email" required class="bg-white/5 border border-slate/30 rounded-lg px-4 py-3 text-cloud placeholder:text-slate/40 focus:outline-none focus:border-primary transition-colors" placeholder="you@yourbusiness.com" />
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label class="text-slate text-sm uppercase tracking-widest">Your message</label>
+        <textarea name="message" required rows="8" class="bg-white/5 border border-slate/30 rounded-lg px-4 py-3 text-cloud placeholder:text-slate/40 focus:outline-none focus:border-primary transition-colors resize-none" placeholder="Tell us about your business, what you do, and why you want to be online..."></textarea>
+      </div>
+
+      <button type="submit" class="self-start bg-primary text-white px-8 py-3 rounded font-semibold hover:bg-deepgreen transition-colors">
+        Send →
+      </button>
+    </form>
+  </section>
+</Layout>

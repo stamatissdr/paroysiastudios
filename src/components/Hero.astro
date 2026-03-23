@@ -1,0 +1,15 @@
+---
+const { eyebrow, title, kicker, cta } = Astro.props
+---
+<section class="w-full bg-charcoal text-cloud py-24 md:py-32">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    {eyebrow && <p class="text-primary text-sm font-semibold uppercase tracking-wide">{eyebrow}</p>}
+    <h1 class="font-black text-4xl md:text-6xl leading-tight mt-4" style="font-weight: 900">{title}</h1>
+    <p class="mt-6 text-lg md:text-xl text-slate max-w-3xl mx-auto leading-relaxed">{kicker}</p>
+    <div class="mt-10">
+      <a href="/free-audit" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded font-semibold text-lg hover:bg-deepgreen transition-colors shadow-lg">
+        {cta} <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
