@@ -13,7 +13,7 @@ module.exports = {
         white: '#FFFFFF'
       },
       fontFamily: {
-        sans: ['Datatype', 'monospace']
+        sans: ['Space Grotesk', 'sans-serif']
       }
     }
   },

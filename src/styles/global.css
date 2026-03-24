@@ -12,7 +12,7 @@
 
 html,
 body {
-  font-family: 'Datatype', ui-sans-serif, system-ui;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui;
   background-color: #2B2F33;
   color: #D9DEE3;
   -webkit-font-smoothing: antialiased;
@@ -46,7 +46,7 @@ button {
 
 h1, h2, h3, h4, h5, h6 {
   color: inherit;
-  font-family: 'Datatype', ui-sans-serif, system-ui;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui;
 }
 
 /* Prose styling for welcome message */
