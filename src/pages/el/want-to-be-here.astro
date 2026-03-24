@@ -1,0 +1,32 @@
+---
+import Layout from '../../components/Layout.astro'
+---
+<Layout lang="el" seo={{ title: 'Θέλεις να είσαι εδώ;', description: 'Πες μας γιατί θέλεις μια δωρεάν ιστοσελίδα.' }}>
+  <section class="max-w-2xl mx-auto px-6 py-20">
+    <p class="text-primary text-sm uppercase tracking-widest mb-4">Δωρεάν Ιστοσελίδα</p>
+    <h1 class="text-5xl md:text-6xl text-cloud mb-12" style="font-weight: 200; letter-spacing: 0.1em;">Πες μας γιατί θέλεις μια δωρεάν ιστοσελίδα.</h1>
+
+    <form action="https://formspree.io/f/xreynbzl" method="POST" class="flex flex-col gap-6">
+      <input type="hidden" name="_subject" value="Αίτηση Δωρεάν Ιστοσελίδας" />
+
+      <div class="flex flex-col gap-1">
+        <label class="text-slate text-sm uppercase tracking-widest">Το όνομά σου</label>
+        <input name="name" required class="bg-white/5 border border-slate/30 rounded-lg px-4 py-3 text-cloud placeholder:text-slate/40 focus:outline-none focus:border-primary transition-colors" placeholder="Σταμάτης..." />
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label class="text-slate text-sm uppercase tracking-widest">Email</label>
+        <input name="email" type="email" required class="bg-white/5 border border-slate/30 rounded-lg px-4 py-3 text-cloud placeholder:text-slate/40 focus:outline-none focus:border-primary transition-colors" placeholder="εσύ@επιχειρηση.gr" />
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label class="text-slate text-sm uppercase tracking-widest">Το μήνυμά σου</label>
+        <textarea name="message" required rows="8" class="bg-white/5 border border-slate/30 rounded-lg px-4 py-3 text-cloud placeholder:text-slate/40 focus:outline-none focus:border-primary transition-colors resize-none" placeholder="Πες μας για την επιχείρησή σου, τι κάνεις και γιατί θέλεις να είσαι online..."></textarea>
+      </div>
+
+      <button type="submit" class="self-start bg-primary text-white px-8 py-3 rounded font-semibold hover:bg-deepgreen transition-colors">
+        Αποστολή →
+      </button>
+    </form>
+  </section>
+</Layout>

@@ -1,0 +1,55 @@
+---
+import Layout from '../../../components/Layout.astro'
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+---
+<Layout lang="el" seo={{ title: 'We Work Digital — Μελέτη Περίπτωσης', description: 'We Work Digital — ένα έργο της Paroysia.' }}>
+
+  <section class="max-w-6xl mx-auto px-6 pt-20 pb-16 flex flex-col gap-16">
+    <div>
+      <p class="text-primary text-sm uppercase tracking-widest mb-4">Μελέτη Περίπτωσης</p>
+      <h1 class="text-5xl md:text-6xl text-cloud mb-12" style="font-weight: 200; letter-spacing: 0.1em;">We Work Digital</h1>
+      <p class="text-slate text-lg leading-relaxed mb-10">
+        Εταιρεία ψηφιακού μάρκετινγκ που εδρεύει στην Καλαμαριά Θεσσαλονίκης, εξειδικευμένη στο social media marketing, την ανάπτυξη ιστοσελίδων, διαφημίσεις και γραφιστική. Συνδιευθυνόμενη από τους Σταμάτη Σίδηρα και Βασίλη Ευσταθιάδη, το έργο κάλυψε την πλήρη δημιουργική και ψηφιακή ανάπτυξη — σχεδιασμό και ανάπτυξη ιστοσελίδας, γραφιστική, στρατηγική μάρκετινγκ και δημιουργική κατεύθυνση που διαμόρφωσε την οπτική ταυτότητα της μάρκας.
+      </p>
+
+      <p class="text-slate text-sm tracking-widest uppercase">
+        Ιστοσελίδα &nbsp;·&nbsp; Γραφιστική &nbsp;·&nbsp; Στρατηγική Marketing &nbsp;·&nbsp; Δημιουργική Κατεύθυνση
+      </p>
+    </div>
+  </section>
+
+  <!-- Fade divider -->
+  <div class="h-24 bg-gradient-to-b from-charcoal via-charcoal/60 to-transparent pointer-events-none"></div>
+
+  <!-- Video -->
+  <section class="max-w-6xl mx-auto px-6 pb-20">
+    <div class="rounded-2xl overflow-hidden">
+      <video autoplay muted loop playsinline class="w-full rounded-2xl">
+        <source src={`${base}/videos/weworksite.mp4`} type="video/mp4" />
+      </video>
+    </div>
+  </section>
+
+  <!-- Credits -->
+  <section class="max-w-6xl mx-auto px-6 pb-20 border-t border-slate/20 pt-12">
+    <h2 class="text-sm text-slate uppercase tracking-widest mb-6">Συντελεστές</h2>
+    <div class="flex flex-col gap-3 text-sm">
+      <div class="flex gap-4">
+        <span class="text-slate w-40">Ανάπτυξη</span>
+        <span class="text-cloud">Paroysia Studios</span>
+      </div>
+      <div class="flex gap-4">
+        <span class="text-slate w-40">Γραφιστική</span>
+        <span class="flex gap-4">
+          <a href="https://efsta.design" target="_blank" rel="noopener" class="text-cloud hover:text-primary transition-colors underline underline-offset-4">efsta.design ↗</a>
+          <a href="https://www.instagram.com/darkmakeslight/" target="_blank" rel="noopener" class="text-slate hover:text-primary transition-colors underline underline-offset-4">@darkmakeslight ↗</a>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-6 pb-16">
+    <a href={`${base}/el/portfolio`} class="text-slate hover:text-cloud text-sm transition-colors">← Πίσω στα Έργα</a>
+  </div>
+
+</Layout>

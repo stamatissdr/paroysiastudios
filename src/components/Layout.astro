@@ -4,43 +4,43 @@ import Footer from './Footer.astro'
 import WhatsApp from './WhatsApp.astro'
 import '../styles/global.css'
 
-const { seo = {} } = Astro.props
+const { seo = {}, lang = 'en' } = Astro.props
 const pageTitle = seo.title ? `${seo.title} — Paroysia Studios` : 'Paroysia Studios'
 const pageDesc = seo.description || 'Your business, finally visible.'
 const pageUrl = seo.url || 'https://paroysiastudios.com'
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc} />
     <link rel="canonical" href={seo.canonical || pageUrl} />
-    
+
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Paroysia Studios" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDesc} />
     <meta property="og:url" content={pageUrl} />
-    
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDesc} />
-    
+
     <link rel="icon" href="/favicon.svg" />
     <meta name="theme-color" content="#388E4F" />
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet" />
   </head>
   <body class="antialiased bg-charcoal text-cloud">
-    <Header />
+    <Header lang={lang} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
     <WhatsApp phone="" />
   </body>
 </html>

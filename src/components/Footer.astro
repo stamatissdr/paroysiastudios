@@ -1,5 +1,8 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+const { lang = 'en' } = Astro.props
+const isEl = lang === 'el'
+const p = isEl ? `${base}/el` : base
 ---
 <footer class="bg-charcoal border-t border-slate/20">
   <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -8,38 +11,40 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
         <span>PAROYSIA</span>
         <span class="w-2 h-2 rounded-full" style="background-color: #388E4F"></span>
       </div>
-      <div class="text-slate mt-2 text-sm">Your business, finally visible.</div>
+      <div class="text-slate mt-2 text-sm">
+        {isEl ? 'Η επιχείρησή σου, επιτέλους ορατή.' : 'Your business, finally visible.'}
+      </div>
     </div>
 
     <div>
-      <div class="font-semibold text-cloud text-sm uppercase tracking-wide">Pages</div>
+      <div class="font-semibold text-cloud text-sm uppercase tracking-wide">{isEl ? 'Σελίδες' : 'Pages'}</div>
       <ul class="mt-4 space-y-2 text-sm">
-        <li><a href={`${base}/services`} class="text-slate hover:text-cloud transition-colors">Services</a></li>
-        <li><a href={`${base}/portfolio`} class="text-slate hover:text-cloud transition-colors">Portfolio</a></li>
-        <li><a href={`${base}/about`} class="text-slate hover:text-cloud transition-colors">About</a></li>
+        <li><a href={`${p}/services`} class="text-slate hover:text-cloud transition-colors">{isEl ? 'Υπηρεσίες' : 'Services'}</a></li>
+        <li><a href={`${p}/portfolio`} class="text-slate hover:text-cloud transition-colors">{isEl ? 'Έργα' : 'Portfolio'}</a></li>
+        <li><a href={`${p}/about`} class="text-slate hover:text-cloud transition-colors">{isEl ? 'Σχετικά' : 'About'}</a></li>
       </ul>
     </div>
 
     <div>
-      <div class="font-semibold text-cloud text-sm uppercase tracking-wide">Resources</div>
+      <div class="font-semibold text-cloud text-sm uppercase tracking-wide">{isEl ? 'Πληροφορίες' : 'Resources'}</div>
       <ul class="mt-4 space-y-2 text-sm">
-        <li><a href={`${base}/free-audit`} class="text-slate hover:text-cloud transition-colors">Free Audit</a></li>
-        <li><a href={`${base}/contact`} class="text-slate hover:text-cloud transition-colors">Contact</a></li>
+        <li><a href={`${p}/free-audit`} class="text-slate hover:text-cloud transition-colors">{isEl ? 'Δωρεάν Αξιολόγηση' : 'Free Audit'}</a></li>
+        <li><a href={`${p}/contact`} class="text-slate hover:text-cloud transition-colors">{isEl ? 'Επικοινωνία' : 'Contact'}</a></li>
       </ul>
     </div>
 
     <div>
-      <div class="font-semibold text-cloud text-sm uppercase tracking-wide">Contact</div>
+      <div class="font-semibold text-cloud text-sm uppercase tracking-wide">{isEl ? 'Επικοινωνία' : 'Contact'}</div>
       <div class="mt-4 text-sm space-y-2">
         <div><a href="mailto:sidiras.stamatis@gmail.com" class="text-slate hover:text-cloud transition-colors">sidiras.stamatis@gmail.com</a></div>
-        <div class="text-slate">Thessaloniki, Greece</div>
+        <div class="text-slate">{isEl ? 'Θεσσαλονίκη, Ελλάδα' : 'Thessaloniki, Greece'}</div>
       </div>
     </div>
   </div>
 
   <div class="border-t border-slate/20 py-6">
     <div class="max-w-6xl mx-auto px-6 text-sm text-center text-slate">
-      © 2026 Paroysia Studios. All rights reserved.
+      {isEl ? '© 2026 Paroysia Studios. Με επιφύλαξη παντός δικαιώματος.' : '© 2026 Paroysia Studios. All rights reserved.'}
     </div>
   </div>
 </footer>

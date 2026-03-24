@@ -1,0 +1,31 @@
+---
+import Layout from '../../components/Layout.astro'
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+---
+<Layout lang="el" seo={{ title: 'Σχετικά', description: 'Η ιστορία μας. Γιατί ξεκινήσαμε την Paroysia.' }}>
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold text-cloud">Σχετικά με την Paroysia</h1>
+
+    <div class="mt-12">
+      <p class="text-lg text-slate leading-relaxed">
+        Προέρχομαι από την εταιρική τεχνολογία — συστήματα SAP, σύνθετες ολοκληρώσεις, το είδος του λογισμικού που διαχειρίζεται μεγάλες οργανώσεις. Τα χρόνια που πέρασαν, έχτισα επίσης ένα δίκτυο ταλαντούχων ανθρώπων. Σχεδιαστές, κινηματογραφιστές — επαγγελματίες που παίρνουν σοβαρά την τέχνη τους. Η Paroysia υπάρχει χάρη σε αυτόν τον συνδυασμό.
+      </p>
+      <p class="text-lg text-slate leading-relaxed mt-6">
+        Πάρα πολλές μικρές επιχειρήσεις μένουν πίσω από agencies που ζητάνε €5.000+ για μια απλή ιστοσελίδα — agencies που αντιμετωπίζουν κάθε πελάτη σαν εταιρικό λογαριασμό και δεν καταλαβαίνουν τι πραγματικά χρειάζεται μια μικρή επιχείρηση.
+      </p>
+      <p class="text-lg text-slate leading-relaxed mt-6">
+        Δεν χρειάζεσαι εταιρικούς προϋπολογισμούς για να έχεις ποιοτικά αποτελέσματα. Μόνο ειλικρινή δουλειά, σαφή επικοινωνία και τεχνολογία που εξυπηρετεί την επιχείρησή σου — όχι το αντίστροφο.
+      </p>
+    </div>
+
+    <section class="mt-16 bg-white/10 backdrop-blur text-cloud p-8 rounded-lg border border-slate/30">
+      <h2 class="text-2xl font-bold">Έτοιμος να συνεργαστείς μαζί μας;</h2>
+      <p class="mt-4 text-slate">Ξεκίνα με δωρεάν αξιολόγηση. Δες ακριβώς πού στέκεσαι online.</p>
+      <div class="mt-6">
+        <a href={`${base}/el/free-audit`} class="inline-block bg-primary text-white px-6 py-3 rounded font-semibold hover:bg-deepgreen transition-colors">
+          Κάνε Δωρεάν Αξιολόγηση
+        </a>
+      </div>
+    </section>
+  </section>
+</Layout>

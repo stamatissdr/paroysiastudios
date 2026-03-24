@@ -1,0 +1,22 @@
+---
+import Layout from '../../components/Layout.astro'
+---
+<Layout lang="el" seo={{ title: 'Δωρεάν Αξιολόγηση', description: 'Δωρεάν αξιολόγηση 30 λεπτών — έλεγχος τοπικής παρουσίας.' }}>
+  <section class="max-w-3xl mx-auto px-6 py-16 bg-white rounded">
+    <h1 class="text-2xl font-bold text-charcoal">Είναι η επιχείρησή σου αόρατη online; Μάθε σε 30 λεπτά — δωρεάν.</h1>
+    <p class="text-slate mt-4">Ελέγχουμε την παρουσία σου στο Google, την ιστοσελίδα, τα social media και τους ανταγωνιστές. Χωρίς δεσμεύσεις.</p>
+    <form action="https://formspree.io/f/xreynbzl" method="POST" class="mt-6 grid gap-4">
+      <input name="name" placeholder="Το όνομά σου" class="p-3 border rounded" required />
+      <input name="business" placeholder="Επωνυμία επιχείρησης" class="p-3 border rounded" />
+      <input name="email" placeholder="Email" class="p-3 border rounded" required />
+      <input name="phone" placeholder="Τηλέφωνο" class="p-3 border rounded" />
+      <select name="business_type" class="p-3 border rounded">
+        <option>Λιανικό εμπόριο</option>
+        <option>Φαγητό &amp; Ποτό</option>
+        <option>Επαγγελματική Υπηρεσία</option>
+        <option>Άλλο</option>
+      </select>
+      <button class="bg-primary text-white px-4 py-2 rounded">Ζήτα Δωρεάν Αξιολόγηση</button>
+    </form>
+  </section>
+</Layout>
