@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 ---
 <section class="relative bg-charcoal text-cloud overflow-hidden">
   <!-- Sticky Logo Section -->
@@ -13,65 +14,100 @@
     </div>
   </div>
 
-  <!-- Welcome Section (scrolls through PAROYSIA) -->
-  <div class="relative bg-charcoal text-cloud py-12 px-6 fade-in-on-scroll" style="opacity: 0; position: relative; z-20;">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl md:text-6xl font-black text-cloud mb-8 md:mb-12" style="font-weight: 900; line-height: 1.1;">
-        Your business, finally visible.
-      </h2>
+  <!-- Welcome Section -->
+  <div class="relative bg-charcoal text-cloud fade-in-on-scroll py-24 px-8 md:px-16" style="opacity: 0; position: relative; z-20;">
+    <div class="max-w-5xl mx-auto space-y-20">
 
-      <div class="space-y-6 text-lg leading-relaxed text-slate mx-auto">
-        <p>
-          Most small businesses are invisible online. Not because they're bad at what they do — because nobody ever showed them how to be found.
+      <!-- 1: Large, left -->
+      <p class="fade-para text-4xl md:text-6xl font-light text-cloud leading-tight max-w-2xl">
+        Most small businesses are invisible online.
+      </p>
+
+      <!-- 2: Small, right -->
+      <p class="fade-para text-base md:text-lg text-slate leading-relaxed max-w-sm ml-auto text-right">
+        Not because they're bad at what they do — because nobody ever showed them how to be found.
+      </p>
+
+      <!-- 3: Medium, left -->
+      <p class="fade-para text-xl md:text-2xl text-slate leading-relaxed max-w-xl">
+        You built your business with hard work, long hours, and real relationships.
+      </p>
+
+      <!-- 4: Large, right, cloud -->
+      <p class="fade-para text-2xl md:text-4xl font-semibold text-cloud leading-snug max-w-xl ml-auto text-right">
+        But when someone searches for what you offer, they find your competitor — not you.
+      </p>
+
+      <!-- 5: Small, left, italic -->
+      <p class="fade-para text-sm md:text-base text-slate italic leading-relaxed max-w-md">
+        Maybe you've been told you need a €3,000 website. Maybe an agency promised results and sent you a report full of numbers that meant nothing. Maybe you set up a Facebook page, posted for a week, and never touched it again.
+      </p>
+
+      <!-- 6: XL, center, bold -->
+      <p class="fade-para text-3xl md:text-5xl font-black text-cloud text-center leading-tight">
+        You're not behind.<br/>You just haven't had the right partner.
+      </p>
+
+      <!-- 7: Medium, right -->
+      <p class="fade-para text-lg md:text-xl text-slate leading-relaxed max-w-lg ml-auto text-right">
+        Paroysia exists for one reason: to give your business the online presence it deserves — without the jargon, without the overpriced packages.
+      </p>
+
+      <!-- 8: Medium, left -->
+      <p class="fade-para text-lg md:text-xl text-slate leading-relaxed max-w-lg">
+        We don't sell dreams. We look at where you are, show you what's missing, and build only what you actually need.
+      </p>
+
+      <!-- CTA -->
+      <div class="fade-para pt-4 flex flex-col items-center text-center">
+        <p class="text-sm text-slate italic mb-6">
+          Start with a free audit. In 30 minutes, you'll see exactly where you stand — and what it takes to be found.
         </p>
-
-        <p>
-          You built your business with hard work, long hours, and real relationships. But when someone searches for what you offer, they find your competitor instead of you.
-        </p>
-
-        <p>
-          Maybe you've been told you need a €3,000 website. Maybe an agency promised you results and delivered a report full of numbers that meant nothing. Maybe you set up a Facebook page two years ago, posted for a week, and never touched it again.
-        </p>
-
-        <p>
-          <strong class="text-cloud">You're not behind. You just haven't had the right partner.</strong>
-        </p>
-
-        <p>
-          Paroysia exists for one reason: to give your business the online presence it deserves — without the jargon, without the overpriced packages, and without making you feel like you need a degree in marketing just to get started.
-        </p>
-
-        <p>
-          We don't sell dreams. We look at where you are right now, show you exactly what's missing, and build only what you actually need. A Google profile that works. A website that loads fast and looks right on every phone. A presence that makes people trust you before they've even walked through your door.
-        </p>
-
-        <div class="pt-6 flex flex-col items-center">
-          <p class="text-sm text-slate italic mb-6">
-            Start with a free audit. In 30 minutes, you'll see exactly where you stand — and what it takes to be found.
-          </p>
-          <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/free-audit`} class="inline-block bg-primary text-white px-8 py-4 rounded font-semibold hover:bg-deepgreen transition-colors text-lg">
-            Get Your Free Audit →
-          </a>
-        </div>
+        <a href={`${base}/free-audit`} class="inline-block bg-primary text-white px-8 py-4 rounded font-semibold hover:bg-deepgreen transition-colors text-lg">
+          Get Your Free Audit →
+        </a>
       </div>
+
     </div>
   </div>
 </section>
 
 <script>
+  // Fade in the whole section as you scroll past the sticky hero
   const welcomeSection = document.querySelector('.fade-in-on-scroll') as HTMLElement;
-
   function updateOpacity() {
     if (!welcomeSection) return;
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
-    // Fade in between 30% and 90% of one screen height scrolled
     const fadeStart = windowHeight * 0.1;
     const fadeEnd = windowHeight * 0.35;
     const opacity = Math.max(0, Math.min(1, (scrollY - fadeStart) / (fadeEnd - fadeStart)));
     welcomeSection.style.opacity = opacity.toString();
   }
-
   window.addEventListener('scroll', updateOpacity, { passive: true });
   updateOpacity();
+
+  // Fade in each paragraph individually as it enters viewport
+  const paras = document.querySelectorAll('.fade-para');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-para-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  paras.forEach(p => observer.observe(p));
 </script>
+
+<style>
+  .fade-para {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-para-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
