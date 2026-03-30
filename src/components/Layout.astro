@@ -36,11 +36,48 @@ const pageUrl = seo.url || 'https://paroysiastudios.com'
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
   </head>
   <body class="antialiased bg-charcoal text-cloud">
-    <Header lang={lang} />
-    <main>
-      <slot />
-    </main>
-    <Footer lang={lang} />
-    <WhatsApp phone="" />
+    <!-- Global background symbols (fixed, behind all content) -->
+    <div id="global-symbols" class="fixed inset-0 pointer-events-none select-none overflow-hidden" style="z-index: 0;"></div>
+    <!-- All page content sits above symbols -->
+    <div class="relative" style="z-index: 1;">
+      <Header lang={lang} />
+      <main>
+        <slot />
+      </main>
+      <Footer lang={lang} />
+      <WhatsApp phone="" />
+    </div>
+    <script>
+      const symbolChars = [
+        '{', '}', '{ }', '[]', '[ ]',
+        '//', '/**/', '/*', '*/',
+        '</>', '<div>', '</>',
+        '=>', '===', '!==',
+        '&&', '||', '!',
+        '#', '@', '~',
+        '→', '↗', '↙', '↑',
+        '✓', '✗', '×', '+', '°', '∞',
+        '0101', '1010', '0011', '1100', '0110', '10110', '01001',
+        ';)',
+        '—', '__', '...',
+      ];
+      const container = document.getElementById('global-symbols');
+      if (container) {
+        for (let i = 0; i < 70; i++) {
+          const span = document.createElement('span');
+          const sym = symbolChars[Math.floor(Math.random() * symbolChars.length)];
+          const isGreen = Math.random() > 0.5;
+          const opacity = (Math.random() * 0.1 + 0.05).toFixed(2);
+          const color = isGreen ? `rgba(56,142,79,${opacity})` : `rgba(217,222,227,${opacity})`;
+          const size = Math.floor(Math.random() * 13 + 10);
+          const x = (Math.random() * 96 + 1).toFixed(1);
+          const y = (Math.random() * 96 + 1).toFixed(1);
+          const rotate = (Math.random() * 70 - 35).toFixed(1);
+          span.textContent = sym;
+          span.style.cssText = `position:absolute;left:${x}%;top:${y}%;font-size:${size}px;color:${color};transform:rotate(${rotate}deg);font-family:monospace;line-height:1;white-space:nowrap;`;
+          container.appendChild(span);
+        }
+      }
+    </script>
   </body>
 </html>
