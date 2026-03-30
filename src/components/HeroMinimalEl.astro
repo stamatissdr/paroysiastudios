@@ -73,41 +73,36 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 </section>
 
 <script>
-  // Fade in the whole section as you scroll past the sticky hero
   const welcomeSection = document.querySelector('.fade-in-on-scroll') as HTMLElement;
-  function updateOpacity() {
-    if (!welcomeSection) return;
-    const scrollY = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const fadeStart = windowHeight * 0.1;
-    const fadeEnd = windowHeight * 0.35;
-    const opacity = Math.max(0, Math.min(1, (scrollY - fadeStart) / (fadeEnd - fadeStart)));
-    welcomeSection.style.opacity = opacity.toString();
-  }
-  window.addEventListener('scroll', updateOpacity, { passive: true });
-  updateOpacity();
+  const paras = Array.from(document.querySelectorAll('.fade-para')) as HTMLElement[];
 
-  // Fade in each paragraph individually as it enters viewport
-  const paras = document.querySelectorAll('.fade-para');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-para-visible');
-        observer.unobserve(entry.target);
-      }
+  function update() {
+    const scrollY = window.scrollY;
+    const wh = window.innerHeight;
+
+    // Section fade-in as you scroll past sticky hero
+    if (welcomeSection) {
+      const sectionOpacity = Math.max(0, Math.min(1, (scrollY - wh * 0.1) / (wh * 0.25)));
+      welcomeSection.style.opacity = sectionOpacity.toString();
+    }
+
+    // Each paragraph: fade in based on how far it has scrolled into view
+    paras.forEach(p => {
+      const rect = p.getBoundingClientRect();
+      // Start fading when element top reaches 90% down the screen, fully visible at 55%
+      const progress = Math.max(0, Math.min(1, (wh * 0.9 - rect.top) / (wh * 0.35)));
+      p.style.opacity = progress.toString();
+      p.style.transform = `translateY(${(1 - progress) * 28}px)`;
     });
-  }, { threshold: 0.15 });
-  paras.forEach(p => observer.observe(p));
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 </script>
 
 <style is:global>
   .fade-para {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .fade-para-visible {
-    opacity: 1;
-    transform: none;
+    transform: translateY(28px);
   }
 </style>
