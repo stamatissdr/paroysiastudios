@@ -2,12 +2,12 @@
 const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 ---
 <section class="relative bg-charcoal text-cloud overflow-hidden">
-  <!-- Background abstract symbols -->
-  <div id="hero-symbols" class="absolute inset-0 pointer-events-none select-none" style="z-index: 0;"></div>
 
   <!-- Sticky Logo Section -->
   <div class="sticky top-0 h-screen flex items-center justify-center z-10 bg-charcoal">
-    <div class="text-center">
+    <!-- Symbols layer inside sticky hero -->
+    <div class="symbols-layer absolute inset-0 pointer-events-none select-none overflow-hidden"></div>
+    <div class="text-center relative" style="z-index: 1;">
       <h1 class="text-5xl md:text-8xl text-cloud" style="font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase;">
         PAROYSIA
       </h1>
@@ -19,7 +19,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 
   <!-- Welcome Section -->
   <div class="relative bg-charcoal text-cloud fade-in-on-scroll py-24 px-8 md:px-16" style="opacity: 0; position: relative; z-20;">
-    <div class="max-w-5xl mx-auto space-y-20">
+    <!-- Symbols layer inside welcome section -->
+    <div class="symbols-layer absolute inset-0 pointer-events-none select-none overflow-hidden"></div>
+    <div class="max-w-5xl mx-auto space-y-20 relative" style="z-index: 1;">
 
       <!-- 1: Large, left -->
       <p class="fade-para text-4xl md:text-6xl font-light text-cloud leading-tight max-w-2xl">
@@ -76,7 +78,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 </section>
 
 <script>
-  // Generate abstract background symbols
   const symbolChars = [
     '→', '←', '↑', '↓', '↗', '↙', '↘', '↖',
     '✓', '✗', '×', '+',
@@ -86,19 +87,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
     ';)', ':/', ':D', ':|',
     '—', '_', '**', '01', '10',
   ];
-  const container = document.getElementById('hero-symbols');
-  if (container) {
-    for (let i = 0; i < 65; i++) {
+
+  function fillSymbols(container: HTMLElement, count: number) {
+    for (let i = 0; i < count; i++) {
       const span = document.createElement('span');
       const sym = symbolChars[Math.floor(Math.random() * symbolChars.length)];
-      const isGreen = Math.random() > 0.55;
-      const opacity = (Math.random() * 0.09 + 0.03).toFixed(2);
+      const isGreen = Math.random() > 0.5;
+      const opacity = (Math.random() * 0.12 + 0.06).toFixed(2);
       const color = isGreen
         ? `rgba(56,142,79,${opacity})`
         : `rgba(217,222,227,${opacity})`;
-      const size = Math.floor(Math.random() * 12 + 10);
-      const x = (Math.random() * 96 + 1).toFixed(1);
-      const y = (Math.random() * 96 + 1).toFixed(1);
+      const size = Math.floor(Math.random() * 14 + 10);
+      const x = (Math.random() * 94 + 2).toFixed(1);
+      const y = (Math.random() * 94 + 2).toFixed(1);
       const rotate = (Math.random() * 70 - 35).toFixed(1);
       span.textContent = sym;
       span.style.cssText = `
@@ -116,6 +117,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
     }
   }
 
+  const layers = document.querySelectorAll('.symbols-layer') as NodeListOf<HTMLElement>;
+  layers.forEach(layer => fillSymbols(layer, 35));
+
   const welcomeSection = document.querySelector('.fade-in-on-scroll') as HTMLElement;
   const paras = Array.from(document.querySelectorAll('.fade-para')) as HTMLElement[];
 
@@ -123,16 +127,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
     const scrollY = window.scrollY;
     const wh = window.innerHeight;
 
-    // Section fade-in as you scroll past sticky hero
     if (welcomeSection) {
       const sectionOpacity = Math.max(0, Math.min(1, (scrollY - wh * 0.1) / (wh * 0.25)));
       welcomeSection.style.opacity = sectionOpacity.toString();
     }
 
-    // Each paragraph: fade in based on how far it has scrolled into view
     paras.forEach(p => {
       const rect = p.getBoundingClientRect();
-      // Start fading when element top reaches 90% down the screen, fully visible at 55%
       const progress = Math.max(0, Math.min(1, (wh * 0.9 - rect.top) / (wh * 0.35)));
       p.style.opacity = progress.toString();
       p.style.transform = `translateY(${(1 - progress) * 28}px)`;
