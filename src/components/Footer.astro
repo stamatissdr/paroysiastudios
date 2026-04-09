@@ -5,9 +5,9 @@ const isEl = lang === 'el'
 const p = isEl ? `${base}/el` : base
 ---
 <footer class="bg-charcoal border-t border-slate/20">
-  <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
+  <div class="max-w-screen-2xl mx-auto px-6 xl:px-12 2xl:px-20 py-16 xl:py-20 grid grid-cols-1 md:grid-cols-4 gap-8 xl:gap-16">
     <div>
-      <img src="/logo.png" alt="Paroysia" class="h-7 w-auto" />
+      <img src="/logo.png" alt="Paroysia" class="h-7 xl:h-9 w-auto" />
       <div class="text-slate mt-2 text-sm">
         {isEl ? 'Η επιχείρησή σου, επιτέλους ορατή.' : 'Your business, finally visible.'}
       </div>
@@ -40,7 +40,7 @@ const p = isEl ? `${base}/el` : base
   </div>
 
   <div class="border-t border-slate/20 py-6">
-    <div class="max-w-6xl mx-auto px-6 text-sm text-center text-slate">
+    <div class="max-w-screen-2xl mx-auto px-6 xl:px-12 2xl:px-20 text-sm xl:text-base text-center text-slate">
       {isEl ? '© 2026 Paroysia Studios. Με επιφύλαξη παντός δικαιώματος.' : '© 2026 Paroysia Studios. All rights reserved.'}
     </div>
   </div>

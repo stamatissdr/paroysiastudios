@@ -18,7 +18,7 @@ const caseStudies = {
 const caseData = caseStudies[slug] || { title: 'Case Study', business: 'Business' }
 ---
 <Layout seo={{ title: caseData.title, description: 'Case study: ' + caseData.business }}>
-  <article class="max-w-4xl mx-auto px-6 py-16">
+  <article class="max-w-screen-lg mx-auto px-6 xl:px-12 py-16">
     <h1 class="text-3xl font-bold text-charcoal">{caseData.title}</h1>
     <p class="text-slate mt-4">{caseData.business}</p>
 

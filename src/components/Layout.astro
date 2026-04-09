@@ -39,9 +39,9 @@ const pageUrl = seo.url || 'https://paroysiastudios.com'
     <!-- Global background symbols (fixed, behind all content) -->
     <div id="global-symbols" class="fixed inset-0 pointer-events-none select-none overflow-hidden" style="z-index: 0;"></div>
     <!-- All page content sits above symbols -->
-    <div class="relative" style="z-index: 1;">
+    <div class="relative flex flex-col min-h-screen" style="z-index: 1;">
       <Header lang={lang} />
-      <main>
+      <main class="flex-1">
         <slot />
       </main>
       <Footer lang={lang} />

@@ -4,7 +4,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 ---
 <Layout seo={{ title: 'We Work Digital — Case Study', description: 'We Work Digital — a project Paroysia was part of.' }}>
 
-  <section class="max-w-6xl mx-auto px-6 pt-20 pb-16 flex flex-col gap-16">
+  <section class="max-w-screen-xl mx-auto px-6 xl:px-12 pt-20 pb-16 flex flex-col gap-16">
     <div>
       <p class="text-primary text-sm uppercase tracking-widest mb-4">Case Study</p>
       <h1 class="text-5xl md:text-6xl text-cloud mb-12" style="font-weight: 200; letter-spacing: 0.1em;">We Work Digital</h1>
@@ -22,7 +22,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
   <div class="h-24 bg-gradient-to-b from-charcoal via-charcoal/60 to-transparent pointer-events-none"></div>
 
   <!-- Video -->
-  <section class="max-w-6xl mx-auto px-6 pb-20">
+  <section class="max-w-screen-xl mx-auto px-6 xl:px-12 pb-20">
     <div class="rounded-2xl overflow-hidden">
       <video autoplay muted loop playsinline class="w-full rounded-2xl">
         <source src={`${base}/videos/weworksite.mp4`} type="video/mp4" />
@@ -31,7 +31,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
   </section>
 
   <!-- Credits -->
-  <section class="max-w-6xl mx-auto px-6 pb-20 border-t border-slate/20 pt-12">
+  <section class="max-w-screen-xl mx-auto px-6 xl:px-12 pb-20 border-t border-slate/20 pt-12">
     <h2 class="text-sm text-slate uppercase tracking-widest mb-6">Credits</h2>
     <div class="flex flex-col gap-3 text-sm">
       <div class="flex gap-4">
@@ -48,7 +48,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '')
     </div>
   </section>
 
-  <div class="max-w-6xl mx-auto px-6 pb-16">
+  <div class="max-w-screen-xl mx-auto px-6 xl:px-12 pb-16">
     <a href={`${base}/portfolio`} class="text-slate hover:text-cloud text-sm transition-colors">← Back to Portfolio</a>
   </div>
 
